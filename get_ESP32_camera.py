@@ -72,12 +72,17 @@ class ESP32Getter():
 if __name__ == '__main__':
 
     url1 = "192.168.137.50"
-    esp1 = ESP32Getter(url1, type="rtsp")
+    esp1 = ESP32Getter(url1, type="http")
+    # url2 = "192.168.137.51"
+    # esp2 = ESP32Getter(url2, type="rtsp")
     while True:
-        frame = esp1.get_frame()
+        frame1 = esp1.get_frame()
+        # frame2 = esp2.get_frame()
 
-        if frame is not None:
-            cv2.imshow("frame", frame)
+        if frame1 is not None:
+            cv2.imshow(f"frame1: {url1}", frame1)
+        # if frame1 is not None:
+        #     cv2.imshow(f"frame2: {url2}", frame2)
 
         key = cv2.waitKey(1)
 
@@ -85,3 +90,4 @@ if __name__ == '__main__':
             break
     
     esp1.destroy()
+    # esp2.destroy()
